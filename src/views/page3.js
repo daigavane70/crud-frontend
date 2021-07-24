@@ -26,15 +26,15 @@ function App() {
         </div>
         <div>
           <div className='label'>Id : </div>
-          <div className='value'>Vedant Daigavane</div>
+          <div className='value'>23116</div>
         </div>
         <div>
           <div className='label'>Mail : </div>
-          <div className='value'>Vedant Daigavane</div>
+          <div className='value'>daigavane70@gmail.com</div>
         </div>
         <div>
           <div className='label'>Mobile Number : </div>
-          <div className='value'>Vedant Daigavane</div>
+          <div className='value'>9172953517</div>
         </div>
         <hr/>
       </div>

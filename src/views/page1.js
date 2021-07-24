@@ -10,19 +10,19 @@ const defList = [
     id: 33116,
   },
   {
-    name: "Vedant",
+    name: "Shivani",
     id: 33117,
   },
   {
-    name: "Vedant Daigavane",
+    name: "Rohit James",
     id: 33114,
   },
   {
-    name: "Vedant Daigavane",
+    name: "Suyash Dahake",
     id: 3317,
   },
   {
-    name: "Vedant Daigavane",
+    name: "Bhavana",
     id: 33166,
   },
 ];
@@ -73,7 +73,7 @@ function App() {
   useEffect( async () => {
     try {
       const res = await axios.get( allUsers );
-      console.log(res);
+      setUsersList(res.data);
     }
     catch(err) {
       console.log(err)
