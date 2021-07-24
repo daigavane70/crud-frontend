@@ -1,0 +1,46 @@
+.user{
+    height: 100vh;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-box{
+    position: relative;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    display: inline-block;
+    width: 600px;
+    height: fit-content;
+    padding: 50px;
+    background: rgb(230, 230, 230);
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.user-box > div{
+    width: 100%;
+    justify-content: space-between;
+    display: flex;
+    font-size: 32px;
+    margin-block: 20px;
+}
+
+.user-icon{
+    height: 150px;
+    width: 150px;
+    width: 100%;
+    margin-top: -100px;
+}
+
+.user-icon img{
+    height: 150px;
+}
+
+.label{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.value{
+    font-weight: 600;
+}
