@@ -42,5 +42,7 @@
 }
 
 .value{
+    max-width: 300px;
+    overflow: auto;
     font-weight: 600;
 }

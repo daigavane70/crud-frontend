@@ -2,23 +2,27 @@ import "./page2.css";
 import { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import Validator from "validator";
-import Axios from 'axios';
+import Axios from "axios";
 import axios from "axios";
-import {createUser} from './urls';
+import { createUser } from "./urls";
+
+const defState = {
+  name: "",
+  email: "",
+  number: "",
+  password: "87asdasas9",
+  id: "",
+}
 
 function App() {
   const [editMode, setEditMode] = useState(false);
 
-  const [data, setData] = useState({
-    name: "",
-    email: "",
-    number: "",
-    password: '879'
-  });
+  const [success, setSuccess] = useState('');
+
+  const [data, setData] = useState(defState);
 
   const [error, setError] = useState({
     name: "",
-    password: "",
     email: "",
     number: "",
   });
@@ -28,16 +32,16 @@ function App() {
   };
 
   const handleSubmit = async () => {
+    setSuccess('');
     setError({ name: "", email: "", password: "", number: "" });
     let errorsFound = false;
     let errors = {
       name: "",
-      password: "",
       number: "",
       email: "",
     };
 
-    if (data.name === "" || !Validator.isAlpha(data.name)) {
+    if (data.name === "") {
       errorsFound = true;
       errors.name = "Plese enter a valid name";
     }
@@ -49,31 +53,70 @@ function App() {
     //   errorsFound = true;
     //   errors.id = "Invalid Id (should be Numeric)";
     // }
-    if (data.number === "" || !Validator.isMobilePhone(data.number)) {
+
+    if (data.number > 10000000000 || !Validator.isMobilePhone(data.number.toString())) {
       errorsFound = true;
       errors.number = "Invalid Mobile Number";
     }
 
-    setError(errors);
 
-    if (!errorsFound) {
-      try{
-        const res = await axios.post(createUser, data);
+    if (!errorsFound && editMode) {
+      console.log('sending req')
+      try {
+        const res = await axios.put(`${createUser}/` + `${data.id}`, data);
         console.log(res);
-      }
-      catch(err){
+        if(res.statusText === 'OK'){
+          setSuccess("Updated User Details SuccessFully")
+        }
+      } catch (err) {
         console.log(err);
       }
     }
+
+    if (!errorsFound && !editMode) {
+      try {
+        const res = await axios.post(`${createUser}/` + `${data.id}`, data);
+        console.log(res);
+        if(res.statusText === 'OK'){
+          setSuccess("User Created SuccessFully")
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    }
+
+    setError( async () => errors);
+
   };
 
   const { id } = useParams();
 
-  useEffect(() => {
-    console.log(id);
+  useEffect(async () => {
+    let edit = false;
 
-    if (id !== undefined) setEditMode(() => true);
-    else setEditMode(() => false);
+    if (id !== undefined) {
+      edit = true;
+      setEditMode(() => true);
+    } 
+    else {
+      edit = false;
+      setEditMode(() => false);
+    }
+
+    if (edit) {
+      try {
+        const res = await axios.get(`${createUser}/` + `${id}`);
+        setData({
+          name: res.data.name,
+          id: res.data._id,
+          email: res.data.email,
+          password: "87asdasas9",
+          number: res.data.number,
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    }
   }, []);
 
   return (
@@ -113,6 +156,7 @@ function App() {
         />
         <div className="error">{error.number}</div>
       </div>
+      <div className='success-message'>{success}</div>
       <div>
         <button onClick={handleSubmit}>{editMode ? "Update" : "Create"}</button>
       </div>

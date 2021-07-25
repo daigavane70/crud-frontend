@@ -1,2 +1,2 @@
-export const allUsers = 'http://localhost:5000/api/user';
-export const createUser = 'http://localhost:5000/api/user';
+export const allUsers = 'https://crudbackend1191.herokuapp.com/api/user';
+export const createUser = 'https://crudbackend1191.herokuapp.com/api/user';
