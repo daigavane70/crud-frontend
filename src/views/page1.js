@@ -30,8 +30,8 @@ import { allUsers, createUser } from "./urls";
 const getUserRow = (user, deleteUser) => {
   return (
     <tr>
-      <td> {user.name} </td>
-      <td> {user._id} </td>
+      <td className='table-cells'> {user.name} </td>
+      <td className='table-cells'> {user._id} </td>
       <td>
         <Link to={`/user/${user._id}`}>
           <img
