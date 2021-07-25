@@ -7,6 +7,7 @@
 .edit-update .title {
   padding-top: 20px;
   font-size: 40px;
+  color: rgb(49, 49, 49);
   text-transform: uppercase;
   font-weight: bold;
   margin-bottom: 20px;
@@ -92,4 +93,23 @@ input[type="number"]::-webkit-outer-spin-button {
   font-size: 20px;
   color: rgb(0, 121, 0);
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+@media (max-width: 600px) {
+  .edit-update .title{
+    font-size: 20px;
+  }
+  .edit-update .form-box{
+    width: 80%;
+  }
+  .edit-update .input-label{
+    font-size: 16px;
+  }
+  .edit-update input{
+    font-size: 16px;
+  }
+  .edit-update button{
+    font-size: 18px;
+    height: 50px;
+  }
 }

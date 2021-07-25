@@ -1,5 +1,6 @@
 .user{
     height: 100vh;
+    width: 100%;
     display: flex;
     text-align: center;
     justify-content: center;
@@ -45,4 +46,16 @@
     max-width: 300px;
     overflow: auto;
     font-weight: 600;
+}
+
+@media (max-width: 600px) {
+    .user{
+        display: inline-block;
+        text-align: center;
+    }
+    
+    .user-box{
+        width: 100%;
+        overflow: auto;
+    }
 }
