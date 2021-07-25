@@ -21,8 +21,8 @@
 
 .user-box > div{
     width: 100%;
-    justify-content: space-between;
     display: flex;
+    justify-content: space-between;
     font-size: 32px;
     margin-block: 20px;
 }
@@ -48,14 +48,31 @@
     font-weight: 600;
 }
 
-@media (max-width: 600px) {
-    .user{
-        display: inline-block;
-        text-align: center;
+@media (max-width: 600px) {    
+    .user-box{
+        padding-inline: 10px;
+        width: 90%;
+        overflow: auto;
+    }
+
+    .user-box > div{
+        justify-content: space-between;
     }
     
-    .user-box{
-        width: 100%;
+    .user-icon img{
+        height: 100px;
+    }
+
+    .label{
+        width: 50%;
+        text-align: left;
+        font-size: 16px;
+    }
+    .value{
+        height: fit-content;
+        width: 50%;
+        text-align: left;
         overflow: auto;
+        font-size: 16px;
     }
 }
